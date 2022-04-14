@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS notasdb;
 CREATE DATABASE notasdb;
 USE notasdb;
 
+
+
 CREATE TABLE users (userID INT NOT NULL AUTO_INCREMENT,
 					userName VARCHAR(20) NOT NULL,
 					userEmail VARCHAR(40) NOT NULL,
@@ -27,6 +29,16 @@ CREATE TABLE NotesCategories (notescategoriesID INT NOT NULL AUTO_INCREMENT,
 					PRIMARY KEY (notescategoriesID),
 					FOREIGN KEY (noteID) REFERENCES notes(noteID),
 					FOREIGN KEY (categoryID) REFERENCES categories(categoryID));
+				
+CREATE TABLE Logs (logID INT NOT NULL AUTO_INCREMENT,
+					noteID_ INT NOT NULL,
+					action_ VARCHAR(40) NOT NULL,
+					tsInsert DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+					PRIMARY KEY (logID),
+					FOREIGN KEY (noteID_) REFERENCES notes(noteID));
+				
+				
+
 
 INSERT INTO users (userName, userEmail) VALUES ('ltorrealba', 'leot5865@gmail.com'),
 												('leoarguinzones', 'ltorrealba@megatlon.com.ar'),
